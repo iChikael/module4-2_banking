@@ -1,9 +1,6 @@
 package com.demo9.service.customer;
 
-import com.demo9.model.Customer;
-import com.demo9.model.Deposit;
-import com.demo9.model.Transfer;
-import com.demo9.model.Withdraw;
+import com.demo9.model.*;
 import com.demo9.repository.CustomerRepository;
 import com.demo9.repository.DepositRepository;
 import com.demo9.repository.TransferRepository;
@@ -37,6 +34,11 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public List<Customer> findALl() {
         return customerRepository.findAll();
+    }
+
+    @Override
+    public List<IDepositWithdrawHistory> getALlDepositWithdrawHistory() {
+        return customerRepository.getALlDepositWithdrawHistory();
     }
 
     @Override

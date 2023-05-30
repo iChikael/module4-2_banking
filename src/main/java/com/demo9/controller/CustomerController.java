@@ -1,9 +1,6 @@
 package com.demo9.controller;
 
-import com.demo9.model.Customer;
-import com.demo9.model.Deposit;
-import com.demo9.model.Transfer;
-import com.demo9.model.Withdraw;
+import com.demo9.model.*;
 import com.demo9.model.dto.TransferRequestDTO;
 import com.demo9.service.customer.ICustomerService;
 import com.demo9.service.deposit.IDepositService;
@@ -362,20 +359,41 @@ public class CustomerController {
         return "/customer/history";
     }
 
-//    @GetMapping("/transaction-history")
-//    public String showHistoryPage(Model model){
-////        Optional<Customer> customerOptional = customerService.findById(id);
-////        model.addAttribute("customer", customerOptional.get());
-//        List<Deposit> deposits = depositService.findALl();
-//        List<Withdraw> withdraws = withdrawService.findALl();
+    @GetMapping("/transaction-history")
+    public String showHistoryPage(Model model){
+//        Optional<Customer> customerOptional = customerService.findById(id);
+//        model.addAttribute("customer", customerOptional.get());
+        List<Deposit> deposits = depositService.findALl();
+        List<Withdraw> withdraws = withdrawService.findALl();
 //        List<Object> combinedList = new ArrayList<>();
 //        combinedList.addAll(deposits);
 //        combinedList.addAll(withdraws);
+
+        List<IDepositWithdrawHistory> combinedList = customerService.getALlDepositWithdrawHistory();
+//        List<DepositWithdrawHistory> combinedList = new ArrayList<>();
+
+//        for (Deposit item : deposits) {
+//            DepositWithdrawHistory depositWithdrawHistory = new DepositWithdrawHistory();
+//            depositWithdrawHistory.setFullName(item.getCustomer().getFullName());
+//            depositWithdrawHistory.setTransactionAmount(item.getTransactionAmount());
+//            depositWithdrawHistory.setTransactionType("Deposit");
 //
-//        model.addAttribute("combinedList", combinedList);
+//            combinedList.add(depositWithdrawHistory);
+//        }
 //
-//        return "/customer/transaction-history";
-//    }
+//        for (Withdraw item : withdraws) {
+//            DepositWithdrawHistory depositWithdrawHistory = new DepositWithdrawHistory();
+//            depositWithdrawHistory.setFullName(item.getCustomer().getFullName());
+//            depositWithdrawHistory.setTransactionAmount(item.getTransactionAmount());
+//            depositWithdrawHistory.setTransactionType("Withdraw");
+//
+//            combinedList.add(depositWithdrawHistory);
+//        }
+
+        model.addAttribute("combinedList", combinedList);
+
+        return "/customer/transaction-history";
+    }
 
     @GetMapping("/delete/{id}")
     public String deletePage(Model model, @PathVariable Long id) {

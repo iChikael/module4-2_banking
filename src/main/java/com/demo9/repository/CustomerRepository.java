@@ -1,6 +1,8 @@
 package com.demo9.repository;
 
 import com.demo9.model.Customer;
+import com.demo9.model.DepositWithdrawHistory;
+import com.demo9.model.IDepositWithdrawHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -10,8 +12,11 @@ import org.springframework.stereotype.Repository;
 import java.math.BigDecimal;
 import java.util.List;
 
-//@Repository
+@Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+
+    @Query(value = "SELECT * FROM vw_deposit_withdraw_history", nativeQuery = true)
+    List<IDepositWithdrawHistory> getALlDepositWithdrawHistory();
 
     List<Customer> findAllByDeletedIsFalse();
 
