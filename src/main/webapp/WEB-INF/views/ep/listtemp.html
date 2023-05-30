@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Users | Front - Admin &amp; Dashboard Template</title>
+
+  <!-- Favicon -->
+  <th:block th:replace="/ep/layout/head :: head"/>
+</head>
+
+<body class="   footer-offset">
+<th:block th:replace="/ep/layout/builder :: builder"/>
+<th:block th:replace="/ep/layout/headerMain :: headerMain"/>
+<th:block th:replace="/ep/layout/plugin :: plugin"/>
+<th:block th:replace="/ep/layout/asidebar :: asidebar"/>
+<th:block th:replace="/ep/layout/searchForm :: search"/>
+<th:block th:replace="/ep/layout/asidebarCompact :: sidebarCompact"/>
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <!-- Page Header -->
+    <th:block th:replace="/ep/layout/filter :: filter"/>
+
+    <!-- Table -->
+    <div class="card-footer" data-select2-id="570">
+      <!-- Pagination -->
+      <div class="row justify-content-center justify-content-sm-between align-items-sm-center" data-select2-id="569">
+        <div class="col-sm mb-2 mb-sm-0" data-select2-id="568">
+          <div class="d-flex justify-content-center justify-content-sm-start align-items-center" data-select2-id="567">
+            <span class="mr-2">Showing:</span>
+
+            <!-- Select -->
+            <select id="datatableEntries" class="js-select2-custom select2-hidden-accessible" data-hs-select2-options="{
+                            &quot;minimumResultsForSearch&quot;: &quot;Infinity&quot;,
+                            &quot;customClass&quot;: &quot;custom-select custom-select-sm custom-select-borderless&quot;,
+                            &quot;dropdownAutoWidth&quot;: true,
+                            &quot;width&quot;: true
+                          }" data-select2-id="datatableEntries" tabindex="-1" aria-hidden="true">
+              <option value="10" data-select2-id="269">10</option>
+              <option value="15" selected="" data-select2-id="270">15</option>
+              <option value="20" data-select2-id="271">20</option>
+            </select><span class="select2 select2-container select2-container--default select2-container--above" dir="ltr" data-select2-id="268" style="top: 0px;"><span class="selection"><span class="select2-selection custom-select custom-select-sm custom-select-borderless" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-datatableEntries-container"><span class="select2-selection__rendered" id="select2-datatableEntries-container" role="textbox" aria-readonly="true" title="15"><span>15</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+            <!-- End Select -->
+
+            <span class="text-secondary mr-2">of</span>
+
+            <!-- Pagination Quantity -->
+            <span id="datatableWithPaginationInfoTotalQty">24</span>
+          </div>
+        </div>
+
+        <div class="col-sm-auto">
+          <div class="d-flex justify-content-center justify-content-sm-end">
+            <!-- Pagination -->
+            <nav id="datatablePagination" aria-label="Activity pagination"><div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate"><ul id="datatable_pagination" class="pagination datatable-custom-pagination"><li class="paginate_item page-item"><a class="paginate_button previous page-link" aria-controls="datatable" data-dt-idx="0" tabindex="0" id="datatable_previous"><span aria-hidden="true">Prev</span></a></li><li class="paginate_item page-item"><a class="paginate_button page-link" aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_item page-item active"><a class="paginate_button page-link" aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_item page-item disabled"><a class="paginate_button next page-link" aria-controls="datatable" data-dt-idx="3" tabindex="0" id="datatable_next"><span aria-hidden="true">Next</span></a></li></ul></div></nav>
+
+          </div>
+        </div>
+      </div>
+      <!-- End Pagination -->
+    </div>
+
+
+    <div class="table-responsive datatable-custom">
+      <div id="datatable_wrapper" class="dataTables_wrapper no-footer">
+        <div id="datatable_filter"
+             class="dataTables_filter"><label>Search:<input type="search" class="" placeholder=""
+                                                            aria-controls="datatable"></label></div>
+        <table id="datatable"
+               class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table dataTable no-footer"
+               data-hs-datatables-options="{
+                     &quot;columnDefs&quot;: [{
+                        &quot;targets&quot;: [0, 7],
+                        &quot;orderable&quot;: false
+                      }],
+                     &quot;order&quot;: [],
+                     &quot;info&quot;: {
+                       &quot;totalQty&quot;: &quot;#datatableWithPaginationInfoTotalQty&quot;
+                     },
+                     &quot;search&quot;: &quot;#datatableSearch&quot;,
+                     &quot;entries&quot;: &quot;#datatableEntries&quot;,
+                     &quot;pageLength&quot;: 15,
+                     &quot;isResponsive&quot;: false,
+                     &quot;isShowPaging&quot;: false,
+                     &quot;pagination&quot;: &quot;datatablePagination&quot;
+                   }" role="grid" aria-describedby="datatable_info">
+          <thead class="thead-light">
+          <tr role="row">
+            <th class="table-column-pr-0 sorting_disabled" rowspan="1" colspan="1" aria-label="
+
+
+
+
+                  " style="width: 34.3125px;">
+              <div class="custom-control custom-checkbox">
+                <input id="datatableCheckAll" type="checkbox" class="custom-control-input">
+                <label class="custom-control-label" for="datatableCheckAll"></label>
+              </div>
+            </th>
+            <th class="table-column-pl-0 sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                colspan="1" aria-label="Name: activate to sort column ascending" style="width: 251.513px;">
+              Name
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                aria-label="Position: activate to sort column ascending" style="width: 159.45px;">Position
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                aria-label="Country: activate to sort column ascending" style="width: 143.95px;">Role
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                aria-label="Status: activate to sort column ascending" style="width: 117.75px;">Status
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                aria-label="Portfolio: activate to sort column ascending" style="width: 158.438px;">
+              Phone
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                aria-label="Role: activate to sort column ascending" style="width: 88.3px;">Address
+            </th>
+            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label=""
+                style="width: 83.488px;"></th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+
+
+
+
+          <tr role="row" class="odd" th:each="employ : ${employs}">
+            <td class="table-column-pr-0">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="usersDataCheck1">
+                <label class="custom-control-label" for="usersDataCheck1"></label>
+              </div>
+            </td>
+            <td>
+              <div class="ml-3">
+                <a class="d-flex align-items-center" href="user-profile.html">
+                  <div class="avatar avatar-soft-primary avatar-circle">
+                    <span class="avatar-initials">A</span>
+                  </div>
+                  <div>
+                        <span class="d-block h5 text-hover-primary mb-0" th:text="${employ.fullName}"><i
+                                class="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title=""
+                                data-original-title="Top endorsed"></i></span>
+                    <span class="d-block font-size-sm text-body" th:text="${employ.email}"></span>
+                  </div>
+                </a>
+                <span><span class="d-block font-size-sm text-body"></span></span>
+              </div>
+            </td>
+            <td>
+              <span class="d-block h5 mb-0" th:text="${employ.position}"></span>
+              <span class="d-block font-size-sm" th:text="${employ.description}"></span>
+            </td>
+            <td>
+            <span th:text="${employ.role}">
+            </span>
+            </td>
+            <td>
+            <span>
+            </span>
+            </td>
+            <td th:text="${employ.phone}"></td>
+            <td th:text="${employ.address}"></td>
+            <td>
+              <!--                            <div id="editUserPopover" data-toggle="popover-dark" data-placement="left" title=""-->
+              <!--                                 data-content="Check out this Edit user modal example." data-html="true"-->
+              <!--                                 data-original-title="<div class='d-flex align-items-center'>Edit user <a href='#!' class='close close-light ml-auto'><i id='closeEditUserPopover' class='tio-clear'></i></a></div>"-->
+              <!--                                 aria-describedby="popover831006">-->
+              <!--                                <a class="btn btn-sm btn-white" href="javascript:;" data-toggle="modal"-->
+              <!--                                   data-target="#editUserModal">-->
+              <!--                                    <i class="tio-edit"></i> Edit-->
+              <!--                                </a>-->
+              <div id="editUserPopover">
+
+                <a class="btn btn-sm btn-white" th:href="@{/edit/__${employ.id}__}">
+                  <i class="tio-edit"></i> Edit
+                </a>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <!-- End Table -->
+
+        <!-- Footer -->
+
+        <!-- End Footer -->
+
+
+
+        <!-- End Card -->
+      </div>
+      <!-- End Content -->
+
+
+
+    </div>
+  </div>
+</main>
+
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-header">
+        <h4 id="editUserModalTitle" class="modal-title">Edit user</h4>
+
+        <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary" data-dismiss="modal"
+                aria-label="Close">
+          <i class="tio-clear tio-lg"></i>
+        </button>
+      </div>
+      <!-- End Header -->
+
+      <!-- Body -->
+
+      <!-- End Body -->
+    </div>
+  </div>
+</div>
+
+<th:block th:replace="/ep/layout/script :: script"/>
+</body>
+</html>

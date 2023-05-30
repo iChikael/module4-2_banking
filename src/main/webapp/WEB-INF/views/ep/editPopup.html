@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Title -->
+  <title>Users | Front - Admin &amp; Dashboard Template</title>
+  <!-- Favicon -->
+  <th:block th:replace="/cp/layout/head :: head"/>
+  <th:block th:replace="/ep/layout/head :: head"/>
+</head>
+<body class="   footer-offset">
+<th:block th:replace="/ep/layout/builder :: builder"/>
+<th:block th:replace="/ep/layout/headerMain :: headerMain"/>
+<th:block th:replace="/ep/layout/plugin :: plugin"/>
+<th:block th:replace="/ep/layout/asidebar :: asidebar"/>
+<th:block th:replace="/ep/layout/searchForm :: search"/>
+<th:block th:replace="/ep/layout/asidebarCompact :: sidebarCompact"/>
+<main id="content" role="main" class="main">
+  <!-- Content -->
+
+  <div class="modal-body">
+    <!-- Nav -->
+    <ul class="js-tabs-to-dropdown nav nav-segment nav-fill nav-lg-down-break mb-5" id="editUserModalTab"
+        role="tablist" data-hs-transform-tabs-to-btn-options='{
+                  "transformResolution": "lg",
+                  "btnClassNames": "btn btn-block btn-white dropdown-toggle justify-content-center mb-3"
+                }'>
+      <li class="nav-item">
+        <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab">
+          <i class="tio-user-outlined mr-1"></i> Profile
+        </a>
+      </li>
+    </ul>
+    <!-- End Nav -->
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="editUserModalTabContent">
+      <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <form th:object="${employ}" method="post">
+          <!-- Form Group -->
+          <div class="row form-group">
+            <label for="editFirstNameModalLabel" class="col-sm-3 col-form-label input-label">Full
+              name <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
+                      data-placement="top" title="Displayed on public forums, such as Front."></i></label>
+
+            <div class="col-sm-9">
+              <div class="js-form-message input-group input-group-sm-down-break">
+                <input type="text" class="form-control" name="editFirstNameModal"
+                       id="editFirstNameModalLabel" placeholder="Your first name"
+                       aria-label="Your first name" value="Ella">
+              </div>
+            </div>
+          </div>
+          <!-- End Form Group -->
+
+          <!-- Form Group -->
+          <div class="row form-group">
+            <label for="editEmailModalLabel"
+                   class="col-sm-3 col-form-label input-label">Email</label>
+
+            <div class="col-sm-9">
+              <div class="js-form-message">
+                <input type="email" class="form-control" name="editEmailModal"
+                       id="editEmailModalLabel" placeholder="Email" aria-label="Email"
+                       value="ella@example.com" >
+              </div>
+            </div>
+          </div>
+          <!-- End Form Group -->
+
+          <!-- Form Group -->
+          <div class="row form-group">
+            <label for="editPhoneLabel" class="col-sm-3 col-form-label input-label">Phone</label>
+
+            <div class="col-sm-9">
+              <div class="input-group input-group-sm-down-break align-items-center">
+                <input type="text" class="js-masked-input form-control" name="phone"
+                       id="editPhoneLabel" placeholder="+x(xxx)xxx-xx-xx"
+                       aria-label="+x(xxx)xxx-xx-xx" value="1(609)972-22-22"
+                       data-hs-mask-options='{
+                                   "template": "+0(000)000-00-00"
+                                 }' >
+              </div>
+            </div>
+          </div>
+          <!-- End Form Group -->
+
+          <!-- Form Group -->
+          <div class="row form-group">
+            <label for="editOrganizationModalLabel" class="col-sm-3 col-form-label input-label">Address</label>
+
+            <div class="col-sm-9">
+              <div class="js-form-message">
+                <input type="text" class="form-control" name="editOrganizationModal"
+                       id="editOrganizationModalLabel" placeholder="Your organization"
+                       aria-label="Your organization" value="Htmlstream" >
+              </div>
+            </div>
+          </div>
+          <!-- End Form Group -->
+
+          <!-- Form Group -->
+          <div class="row form-group">
+            <label for="editDepartmentModalLabel" class="col-sm-3 col-form-label input-label">Position</label>
+
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="editDepartmentModal"
+                     id="editDepartmentModalLabel" placeholder="Your department"
+                     aria-label="Your department" >
+            </div>
+          </div>
+          <!-- End Form Group -->
+
+          <!-- Form Group -->
+          <div class="row form-group">
+            <label class="col-sm-3 col-form-label input-label">Role</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="editDepartmentModal"
+                     id="editRole" placeholder="Your department"
+                     aria-label="Your department">
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-3 col-form-label input-label">Description</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="editDepartmentModal"
+                     id="editDescription" placeholder=""
+                     aria-label="Your department">
+            </div>
+          </div>
+          <!-- End Form Group -->
+
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-white mr-2" data-dismiss="modal"
+                    aria-label="Close">Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+
+
+
+        <!-- End Form Group -->
+
+        <!-- Form Group -->
+        </form>
+      </div>
+
+
+    </div>
+    <!-- End Tab Content -->
+  </div>
+</main>
+<th:block th:replace="/ep/layout/script :: script"/>
+<th:block th:replace="/cp/layout/script :: script"/>
+</body>
+</html>
