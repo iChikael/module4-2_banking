@@ -1,0 +1,50 @@
+
+<tr role="row" class="odd">
+    <td class="table-column-pr-0">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="usersDataCheck1">
+            <label class="custom-control-label" for="usersDataCheck1"></label>
+        </div>
+    </td>
+    <th:block th:each="item : ${employs}">
+<tr>
+    <td th:text="${item.id}"></td>
+    <div class="ml-3">
+        <div class="ml-3">
+            <span class="d-block h5 text-hover-primary mb-0" th:text="${item.fullName}"><i
+                    class="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title=""
+                    data-original-title="Top endorsed"></i></span>
+            <span class="d-block font-size-sm text-body" th:text="${item.mail}"></span>
+        </div>
+        <span><td th:text="${item.email}" class="d-block font-size-sm text-body"></td></span>
+    </div>
+
+    <td>
+        <span class="d-block h5 mb-0" th:text="${item.position}"></span>
+        <span class="d-block font-size-sm" th:text="${item.description}"></span>
+    </td>
+    <td>
+    <span class="legend-indicator bg-success" th:text="${item.role}">
+    </span>
+    </td>
+    <td>
+    <span>
+
+    </span>
+    </td>
+    <td th:text="${item.phone}"></td>
+    <td th:text="${item.address}"></td>
+    <td>
+        <div id="editUserPopover" data-toggle="popover-dark" data-placement="left" title=""
+             data-content="Check out this Edit user modal example." data-html="true"
+             data-original-title="<div class='d-flex align-items-center'>Edit user <a href='#!' class='close close-light ml-auto'><i id='closeEditUserPopover' class='tio-clear'></i></a></div>"
+             aria-describedby="popover831006">
+            <a class="btn btn-sm btn-white" href="javascript:;" data-toggle="modal" data-target="#editUserModal">
+                <i class="tio-edit"></i> Edit
+            </a>
+        </div>
+    </td>
+</tr>
+</th:block>
+
+

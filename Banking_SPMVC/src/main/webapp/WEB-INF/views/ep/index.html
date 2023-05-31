@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title -->
+    <title>Users | Front - Admin &amp; Dashboard Template</title>
+    <!-- Favicon -->
+    <th:block th:replace="/ep/layout/head :: head"/>
+</head>
+<body class="   footer-offset">
+<th:block th:replace="/ep/layout/builder :: builder"/>
+<th:block th:replace="/ep/layout/headerMain :: headerMain"/>
+<th:block th:replace="/ep/layout/plugin :: plugin"/>
+<th:block th:replace="/ep/layout/asidebar :: asidebar"/>
+<th:block th:replace="/ep/layout/searchForm :: search"/>
+<th:block th:replace="/ep/layout/asidebarCompact :: sidebarCompact"/>
+<main id="content" role="main" class="main">
+    <!-- Content -->
+    <div class="header">
+        <nav class="navbar bg-primary">
+            <div class="container-fluid">
+                <h2>List of customers</h2>
+                <div class="d-flex">
+                    <a href="/customers/create">
+                        <button class="btn btn-light m-4">
+                            <i class="fas fa-plus"></i>
+                            Create
+                        </button>
+                    </a>
+                    <a href="/customers/history">
+                        <button class="btn btn-light m-4">
+                            History
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Full name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Balance</th>
+                <th>Address</th>
+                <th colspan="5">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="item : ${customers}">
+                <tr>
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.fullName}"></td>
+                    <td th:text="${item.email}"></td>
+                    <td th:text="${item.phone}"></td>
+                    <td th:text="${item.balance}"></td>
+                    <td th:text="${item.address}"></td>
+                    <td>
+                        <a th:href="@{/customers/update/__${item.id}__}">
+                            <button class="btn btn-outline-secondary" title="Edit">
+                                <i class="far fa-edit"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+
+                        </button>
+                        <a th:href="@{/customers/deposit/__${item.id}__}">
+                            <button class="btn btn-outline-success" title="Deposit">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+
+                        </button>
+                        <a th:href="@{/customers/withdraw/__${item.id}__}">
+                            <button class="btn btn-outline-success" title="Withdraw">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/customers/transfer/__${item.id}__}">
+                            <button class="btn btn-outline-primary" title="Transfer">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/customers/delete/__${item.id}__}">
+                            <button class="btn btn-outline-primary" title="Delete">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+
+    <!-- End Content -->
+    <th:block th:replace="/ep/layout/footer :: footer"/>
+</main>
+<th:block th:replace="/ep/layout/script :: script"/>
+</body>
+</html>

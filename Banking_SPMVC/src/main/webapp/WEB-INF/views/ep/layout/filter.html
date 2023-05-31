@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:fragment="filter">
+  <div class="page-header">
+    <div class="row align-items-end">
+<!--      <div class="col-sm mb-2 mb-sm-0">-->
+<!--        <nav aria-label="breadcrumb">-->
+<!--          <ol class="breadcrumb breadcrumb-no-gutter">-->
+<!--            <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Pages</a></li>-->
+<!--            <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Users</a></li>-->
+<!--            <li class="breadcrumb-item active" aria-current="page">Overview</li>-->
+<!--          </ol>-->
+<!--        </nav>-->
+
+<!--        <h1 class="page-header-title">Users</h1>-->
+<!--      </div>-->
+
+      <div class="col-sm-auto">
+        <a class="btn btn-primary" href="/create">
+          <i class="tio-user-add mr-1"></i> Add student
+        </a>
+      </div>
+    </div>
+    <!-- End Row -->
+  </div>
+  <!-- End Page Header -->
+
+  <!-- Stats -->
+
+  <!-- End Stats -->
+
+  <!-- Card -->
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header">
+      <div class="row justify-content-between align-items-center flex-grow-1">
+        <div class="col-sm-6 col-md-4 mb-3 mb-sm-0">
+          <form>
+            <!-- Search -->
+            <div class="input-group input-group-merge input-group-flush">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="tio-search"></i>
+                </div>
+              </div>
+              <input id="datatableSearch" type="search" class="form-control" placeholder="Search students" aria-label="Search users">
+            </div>
+            <!-- End Search -->
+          </form>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="d-sm-flex justify-content-sm-end align-items-sm-center">
+
+            <!-- End Unfold -->
+          </div>
+        </div>
+      </div>
+      <!-- End Row -->
+    </div>
+  </div>
+    <!-- End Header -->
+</th:block>
