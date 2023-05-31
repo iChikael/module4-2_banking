@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="/assets/bootstrap/v5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/sweetalert2/sweetalert2.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+
+        </header>
+
+        <div class="content">
+            <form method="post">
+                <div class="row mb-3">
+                    <div class="col-lg-6">
+                        <label for="fullNameCre">Full Name</label>
+                        <input type="text" id="fullNameCre" class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="emailCrea">Email</label>
+                        <input type="email" id="emailCre" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6">
+                        <label for="phoneCre">Phone</label>
+                        <input type="tel" id="phoneCre" class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="addressCre">Address</label>
+                        <input type="text" id="addressCre" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div>
+                        <button type="button" id="btnCreate" class="btn btn-outline-primary">
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <table id="tbCustomer" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Balance</th>
+                        <th colspan="3">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Update Customer -->
+    <div class="modal fade" id="mdUpdate" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal update customer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameUp">Full Name</label>
+                                <input type="text" id="fullNameUp" class="form-control">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailUp">Email</label>
+                                <input type="email" id="emailUp" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="phoneUp">Phone</label>
+                                <input type="tel" id="phoneUp" class="form-control">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressUp">Address</label>
+                                <input type="text" id="addressUp" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnUpdate" class="btn btn-outline-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/assets/jquery/jquery-3.6.4.min.js"></script>
+    <script src="/assets/bootstrap/v5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/sweetalert2/sweetalert2.all.min.js"></script>
+
+    <script src="/assets/js/appBase.js"></script>
+
+    <script>
+        let id = 1;
+        let customers = [
+            new Customer(id++, 'NVA', 'nva@co.cc', '2345', '28 Nguyễn Tri Phương', 0, false),
+            new Customer(id++, 'NVB', 'nvb@co.cc', '3456', '29 Nguyễn Tri Phương', 0, false)
+        ];
+
+        let tbody = $('#tbCustomer tbody');
+
+        function renderCustomer(obj) {
+            return `
+                <tr id='tr_${obj.id}'>
+                    <td>${obj.id}</td>
+                    <td>${obj.fullName}</td>
+                    <td>${obj.email}</td>
+                    <td>${obj.phone}</td>
+                    <td>${obj.address}</td>
+                    <td>${obj.balance}</td>
+                    <td>
+                        <button class='btn btn-outline-secondary edit' data-id='${obj.id}'>
+                            Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button class='btn btn-outline-danger delete' data-id='${obj.id}'>
+                            Delete
+                        </button>
+                    </td>  
+                </tr>
+            `;
+        }
+
+
+        function getAllCustomers() {
+            customers.forEach((customer) => {
+                let str = renderCustomer(customer);
+                tbody.prepend(str);
+            });
+
+            addEventEdit();
+            addEventDelete();
+        }
+
+        getAllCustomers();
+
+        function getCustomerById(customerId) {
+            return customers.find(item => item.id == customerId);
+        }
+
+
+        function addEventEdit() {
+            $('.edit').on('click', function () {
+                customerId = $(this).data('id');
+                let customer = getCustomerById(customerId);
+                if (customer) {
+                    $('#fullNameUp').val(customer.fullName);
+                    $('#emailUp').val(customer.email);
+                    $('#phoneUp').val(customer.phone);
+                    $('#addressUp').val(customer.address);
+                    $('#mdUpdate').modal('show');
+                }
+            });
+        }
+
+        function addEventDelete() {
+            $('.delete').on('click', function () {
+
+                customerId = $(this).data('id');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        customers = customers.filter(item => item.id != customerId);
+
+                        $('#tr_' + customerId).remove();
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+
+            })
+        }
+
+        $('#btnCreate').on('click', () => {
+            let fullName = $('#fullNameCre').val();
+            let email = $('#emailCre').val();
+            let phone = $('#phoneCre').val();
+            let address = $('#addressCre').val();
+            let balance = 0
+
+            let customer = {
+                id,
+                fullName,
+                email,
+                phone,
+                address,
+                balance,
+            }
+
+            ++id;
+
+            customers.push(customer);
+
+            let str = renderCustomer(customer);
+            $('#tbCustomer tbody').prepend(str);
+
+            addEventEdit();
+            addEventDelete();
+
+        })
+
+
+        $('#btnUpdate').on('click', () => {
+            let fullName = $('#fullNameUp').val();
+            let email = $('#emailUp').val();
+            let phone = $('#phoneUp').val();
+            let address = $('#addressUp').val();
+            let balance = 0;
+            let deleted = false;
+
+            let customer = {
+                id: customerId,
+                fullName,
+                email,
+                phone,
+                address,
+                balance,
+                deleted
+            }
+
+            handleUpdateCustomer(customer).then((data) => {
+                let str = renderCustomer(data);
+                $('#tr_' + customerId).replaceWith(str);
+
+                addEventEdit();
+                addEventDelete();
+
+                $('#mdUpdate').modal('hide');
+            })
+                .catch((error) => {
+                    console.log(error);
+                })
+        })
+
+
+        function handleUpdateCustomer(obj) {
+            return new Promise((resolve, reject) => {
+                const index = customers.findIndex(item => item.id === obj.id);
+                if (index === -1) {
+                    reject(new Error('Customer not found'));
+                    return;
+                }
+                customers[index].fullName = obj.fullName;
+                customers[index].email = obj.email;
+                customers[index].phone = obj.phone;
+                customers[index].address = obj.address;
+
+                resolve(customers[index]);
+            });
+        }
+
+
+
+    </script>
+</body>
+
+</html>
