@@ -1,0 +1,95 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:fragment="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <div class="nav-link">
+                <div class="profile-image">
+                    <img src="/assets/images/faces/face10.jpg" alt="image">
+                    <span class="online-status online"></span>
+                    <!--change class online to offline or busy as needed-->
+                </div>
+                <div class="profile-name">
+                    <p class="name">
+                        Marina Michel
+                    </p>
+                    <p class="designation">
+                        Super Admin
+                    </p>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/temp">
+                <i class="icon-rocket menu-icon"></i>
+                <span class="menu-title">Dashboard</span>
+                <span class="badge badge-success">New</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false"
+               aria-controls="page-layouts">
+                <i class="icon-check menu-icon"></i>
+                <span class="menu-title">Customer</span>
+                <span class="badge badge-danger">3</span>
+            </a>
+            <div class="collapse" id="page-layouts">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item d-none d-lg-block">
+                        <a class="nav-link" href="/customers">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customers/create">Create</a>
+                    </li>
+                    <li class="nav-item d-none d-lg-block">
+                        <a class="nav-link" href="/customers/edit">Edit</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+            <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false"
+               aria-controls="sidebar-layouts">
+                <i class="icon-layers menu-icon"></i>
+                <span class="menu-title">Sidebar Layouts</span>
+                <span class="badge badge-warning">5</span>
+            </a>
+            <div class="collapse" id="sidebar-layouts">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="../layout/compact-menu.html">Compact
+                        menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../layout/sidebar-collapsed.html">Icon
+                        menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../layout/sidebar-hidden.html">Sidebar
+                        Hidden</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../layout/sidebar-hidden-overlay.html">Sidebar
+                        Overlay</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../layout/sidebar-fixed.html">Sidebar
+                        Fixed</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="mt-4 nav-item nav-progress">
+            <h6 class="nav-progress-heading mt-4 font-weight-normal">
+                Today's Sales
+                <span class="nav-progress-sub-heading">
+                      50 sold
+                    </span>
+            </h6>
+            <div class="progress progress-sm">
+                <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25"
+                     aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <h6 class="nav-progress-heading mt-4 font-weight-normal">
+                Customer target
+                <span class="nav-progress-sub-heading">
+                      500
+                    </span>
+            </h6>
+            <div class="progress progress-sm">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50"
+                     aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </li>
+    </ul>
+</th:block>

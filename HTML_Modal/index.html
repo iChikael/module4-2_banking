@@ -158,13 +158,13 @@
 
     <script>
         let id = 1;
-        let customers = [
-            new Customer(id++, 'NVA', 'nva@co.cc', '2345', '28 Nguyễn Tri Phương', 0, false),
-            new Customer(id++, 'NVB', 'nvb@co.cc', '3456', '29 Nguyễn Tri Phương', 0, false)
-        ];
+        // let customers = [
+        //     new Customer(id++, 'NVA', 'nva@co.cc', '2345', '28 Nguyễn Tri Phương', 0, false),
+        //     new Customer(id++, 'NVB', 'nvb@co.cc', '3456', '29 Nguyễn Tri Phương', 0, false)
+        // ];
 
-        // let customerId = 0;
-        // let customer;
+        let customerId;
+        let customers = [];
 
         let tbody = $('#tbCustomer tbody');
 
@@ -219,49 +219,49 @@
         //     `;
         // }
 
-        // function getAllCustomers() {
-
-        //     $.ajax({
-        //         type: 'GET',
-        //         url: 'http://localhost:3300/customers'
-        //     })
-        //         .done((data) => {
-        //             $.each(data, (index, item) => {
-        //                 let str = renderCustomer(item);
-        //                 $('#tbCustomer tbody').prepend(str);
-        //             })
-
-        //             addEventEdit();
-        //             // addEventDeposit();
-        //             addEventDelete();
-        //         })
-        //         .fail((error) => {
-        //             console.error(error);
-        //         })
-        // }
-
-        // getAllCustomers();
-
-
         function getAllCustomers() {
-            customers.forEach((customer) => {
-                let str = renderCustomer(customer);
-                tbody.prepend(str);
-            });
 
-            addEventEdit();
-            // addEventDeposit();
-            addEventDelete();
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/customers'
+            })
+                .done((data) => {
+                    $.each(data, (index, item) => {
+                        let str = renderCustomer(item);
+                        $('#tbCustomer tbody').prepend(str);
+                    })
+
+                    addEventEdit();
+                    // addEventDeposit();
+                    addEventDelete();
+                })
+                .fail((error) => {
+                    console.error(error);
+                })
         }
 
         getAllCustomers();
 
+
+        // function getAllCustomers() {
+        //         customers.forEach((customer) => {
+        //         let str = renderCustomer(customer);
+        //         tbody.prepend(str);
+        //     });
+
+        //     addEventEdit();
+        //     addEventDeposit();
+        //     addEventDelete();
+        // }
+
+        // getAllCustomers();
+
         function getCustomerById(customerId) {
             return customers.find(item => item.id == customerId);
-            // return $.ajax({
-            //     type: 'GET',
-            //     url: 'http://localhost:3300/customers/' + customerId
-            // })
+            return $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/customers/' + customerId
+            })
         }
 
 
@@ -289,7 +289,7 @@
         }
 
         function addEventDeposit() {
-            $('.deposit').on('click', function() {
+            $('.deposit').on('click', function () {
                 customerId = $(this).data('id');
                 getCustomerById(customerId).then((data) => {
 
@@ -304,9 +304,9 @@
                         alert('Customer not found');
                     }
                 })
-                .catch((error) => {
-                    console.log(error);
-                });
+                    .catch((error) => {
+                        console.log(error);
+                    });
             })
         }
 
@@ -417,24 +417,24 @@
                     headers: {
                         'accept': 'application/json',
                         'content-type': 'application/json'
-                    },  
+                    },
                     url: 'http://localhost:3300/customers/' + customer.id,
                     data: JSON.stringify(customer)
                 })
-                .done((data) => {
-                    let str = renderCustomer(data);
-                    $('#tr_' + customerId).replaceWith(str);
+                    .done((data) => {
+                        let str = renderCustomer(data);
+                        $('#tr_' + customerId).replaceWith(str);
 
-                    addEventEdit();
-                    addEventDeposit();
-                    addEventDelete();
+                        addEventEdit();
+                        addEventDeposit();
+                        addEventDelete();
 
-                    $('#mdDeposit').modal('hide');
-                })
+                        $('#mdDeposit').modal('hide');
+                    })
 
                 let deposit = {
                     customerId,
-                    transactionAmount 
+                    transactionAmount
                 }
 
                 $.ajax({
@@ -442,14 +442,14 @@
                     headers: {
                         'accept': 'application/json',
                         'content-type': 'application/json'
-                    },  
+                    },
                     url: 'http://localhost:3300/deposits',
                     data: JSON.stringify(deposit)
                 })
             })
-            .catch((error) => {
-                console.log(error);
-            })
+                .catch((error) => {
+                    console.log(error);
+                })
         })
 
         function handleUpdateCustomer(obj) {

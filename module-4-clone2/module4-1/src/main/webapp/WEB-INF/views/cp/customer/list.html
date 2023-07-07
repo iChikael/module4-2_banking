@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Victory Admin</title>
+    <th:block th:replace="/cp/layout/head :: head"/>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <th:block th:replace="/cp/layout/navbar :: navbar"/>
+
+        <div class="container-fluid page-body-wrapper">
+            <div class="row row-offcanvas row-offcanvas-right">
+
+                <th:block th:replace="/cp/layout/theme-setting-wrapper :: theme-setting-wrapper"/>
+
+                <th:block th:replace="/cp/layout/right-sidebar :: right-sidebar"/>
+
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    <th:block th:replace="/cp/layout/sidebar :: sidebar"/>
+                </nav>
+
+                <!-- partial -->
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Hoverable Table</h4>
+                                    <p class="card-description">
+                                        Add class <code>.table-hover</code>
+                                    </p>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Full name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Address</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <th:block th:each="item : ${customers}">
+                                                    <tr>
+                                                        <td th:text="${item.id}"></td>
+                                                        <td th:text="${item.fullName}"></td>
+                                                        <td th:text="${item.email}"></td>
+                                                        <td th:text="${item.phone}"></td>
+                                                        <td th:text="${item.address}"></td>
+                                                        <td><label class="badge badge-danger">Pending</label></td>
+                                                    </tr>
+                                                </th:block>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <th:block th:replace="/cp/layout/footer :: footer"/>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <!-- row-offcanvas ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <th:block th:replace="/cp/layout/script :: script"/>
+
+</body>
+
+</html>

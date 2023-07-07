@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="./assets/bootstrap/v5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/sweetalert2/sweetalert2.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <h2>List of customers</h2>
+                    <div class="d-flex">
+                        <div>
+                            <button type="button" id="btnCreate" class="btn btn-outline-primary m-2">Create
+                                User</button>
+                        </div>
+                        <div>
+                            <button type="button" id="btnHistory" class="btn btn-outline-danger mt-2">Transfers
+                                history</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="content">
+
+
+
+            <table id="tbCustomer" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Balance</th>
+                        <th colspan="5">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Create Customer -->
+    <div class="modal fade" id="mdCreate" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal create customer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameCre">Full Name</label>
+                                <input type="text" id="fullNameCre" class="form-control">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailCre">Email</label>
+                                <input type="email" id="emailCre" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="phoneCre">Phone</label>
+                                <input type="tel" id="phoneCre" class="form-control">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressCre">Address</label>
+                                <input type="text" id="addressCre" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btSave" class="btn btn-outline-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update Customer -->
+    <div class="modal fade" id="mdUpdate" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal update customer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameUp">Full Name</label>
+                                <input type="text" id="fullNameUp" class="form-control">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailUp">Email</label>
+                                <input type="email" id="emailUp" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="phoneUp">Phone</label>
+                                <input type="tel" id="phoneUp" class="form-control">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressUp">Address</label>
+                                <input type="text" id="addressUp" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnUpdate" class="btn btn-outline-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Deposit -->
+    <div class="modal fade" id="mdDeposit" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal deposit</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameDep">Full Name</label>
+                                <input type="text" id="fullNameDep" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailDep">Email</label>
+                                <input type="email" id="emailDep" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="balanceDep">Current balance</label>
+                                <input type="tel" id="balanceDep" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="transactionAmountDep">Transaction Amount</label>
+                                <input type="text" id="transactionAmountDep" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnDeposit" class="btn btn-outline-success">Deposit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal Transfer -->
+    <div class="modal fade" id="mdTransfer" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal transfer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-4">
+                                <label for="fullNameSent">Full Name</label>
+                                <input type="text" id="fullNameSent" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="recipientSelect">Recipient</label>
+                                <select class="form-select" name="recipient.id" id="recipientSelect">
+                                    <option value="" selected disabled>Select recipient</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="balanceSent">Current balance</label>
+                                <input type="tel" id="balanceSent" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-lg-4">
+                                <label for="transactionAmountSent">Transaction Amount</label>
+                                <input type="text" id="transactionAmountSent" class="form-control">
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="transactionAmountFee">Transaction Fee (10%)</label>
+                                <input type="text" id="transactionAmountFee" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="transactionAmountTotal">Transaction Total</label>
+                                <input type="text" id="transactionAmountTotal" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnTransfer" class="btn btn-outline-success">Transfer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Withdraw -->
+    <div class="modal fade" id="mdWithdraw" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal Withdraw</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameWd">Full Name</label>
+                                <input type="text" id="fullNameWd" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailWd">Email</label>
+                                <input type="email" id="emailWd" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="balanceWd">Current balance</label>
+                                <input type="tel" id="balanceWd" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="transactionAmountWd">Transaction Amount</label>
+                                <input type="text" id="transactionAmountWd" class="form-control" value="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnWithdraw" class="btn btn-outline-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal History -->
+    <div class="modal fade" id="mdHistory" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal History</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="tbHistory" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Sender</th>
+                                <th>Recipient</th>
+                                <th>Amount</th>
+                                <th>Fee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="./assets/jquery/jquery-3.6.4.min.js"></script>
+    <script src="./assets/bootstrap/v5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="./assets/js/appBase.js"></script>
+
+    <script>
+        let currentId;
+        let tbody = $('#tbCustomer tbody');
+        function renderCustomer(obj) {
+            return `
+                <tr id='tr_${obj.id}'>
+                    <td>${obj.id}</td>
+                    <td>${obj.fullName}</td>
+                    <td>${obj.email}</td>
+                    <td>${obj.phone}</td>
+                    <td>${obj.address}</td>
+                    <td>${obj.balance}</td>
+                    <td>
+                        <button class='btn btn-outline-secondary edit' data-id='${obj.id}'>
+                            Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button class='btn btn-outline-success deposit' data-id='${obj.id}'>
+                            Deposit
+                        </button>
+                    </td>
+                    <td>
+                        <button class='btn btn-outline-success withdraw' data-id='${obj.id}'>
+                            Withdraw
+                        </button>
+                    </td>
+                    <td>
+                        <button class='btn btn-outline-success transfer' data-id='${obj.id}'>
+                            Transfer
+                        </button>
+                    </td>
+                    <td>
+                        <button class='btn btn-outline-danger delete' data-id='${obj.id}' id="btnDelete">
+                            Delete
+                        </button>
+                    </td>  
+                </tr>
+            `;
+        }
+
+        // function getAllCustomers() {
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: 'http://localhost:3300/customers'
+        //     })
+        //         .done((data) => {
+        //             $.each(data, (index, item) => {
+        //                 let str = renderCustomer(item);
+        //                 $('#tbCustomer tbody').prepend(str);
+        //             })
+
+        //             addEventEdit();
+        //             addEventDeposit();
+        //             addEventDelete();
+        //             addEventWithdraw();
+        //             addEventTransfer();
+
+        //             let maxId = Math.max.apply(Math, data.map(function (customer) {
+        //                 return customer.id;
+        //             }));
+        //             currentId = maxId + 1;
+        //         })
+        //         .fail((error) => {
+        //             console.error(error);
+        //         })
+        // }
+
+
+        function getAllCustomers() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/customers'
+            })
+                .done((data) => {
+                    $.each(data, (index, item) => {
+                        if (!item.deleted) {
+                            let str = renderCustomer(item);
+                            $('#tbCustomer tbody').prepend(str);
+                        }
+                    })
+
+                    addEventEdit();
+                    addEventDeposit();
+                    addEventDelete();
+                    addEventWithdraw();
+                    addEventTransfer();
+
+                    let maxId = Math.max.apply(Math, data.map(function (customer) {
+                        return customer.id;
+                    }));
+                    currentId = maxId + 1;
+                })
+                .fail((error) => {
+                    console.error(error);
+                })
+        }
+
+
+        getAllCustomers();
+
+
+
+        function getCustomerById(customerId) {
+            return $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/customers/' + customerId
+            })
+        }
+
+        function addEventEdit() {
+            $('.edit').on('click', function () {
+                customerId = $(this).data('id');
+                getCustomerById(customerId).then((data) => {
+                    console.log(data);
+
+                    if (data !== {}) {
+                        $('#fullNameUp').val(data.fullName);
+                        $('#emailUp').val(data.email);
+                        $('#phoneUp').val(data.phone);
+                        $('#addressUp').val(data.address);
+                        $('#mdUpdate').modal('show');
+                    }
+                    else {
+                        alert('Customer not found');
+                    }
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            })
+        }
+
+        $('#btnUpdate').on('click', () => {
+            let fullName = $('#fullNameUp').val();
+            let email = $('#emailUp').val();
+            let phone = $('#phoneUp').val();
+            let address = $('#addressUp').val();
+            let deleted = false;
+            if (!fullName || !email || !phone || !address) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please fill all required fields !!!'
+          });
+        return;
+    }
+            let customer = {
+                id: customerId,
+                fullName,
+                email,
+                phone,
+                address,
+                deleted
+            }
+            handleUpdateCustomer(customer).then((data) => {
+                let str = renderCustomer(data);
+                $('#tr_' + customerId).replaceWith(str);
+
+                addEventEdit();
+                addEventDelete();
+                addEventTransfer();
+                addEventWithdraw();
+
+                $('#mdUpdate').modal('hide');
+            })
+                .catch((error) => {
+                    console.log(error);
+                })
+        })
+
+        function handleUpdateCustomer(obj) {
+            return $.ajax({
+                type: 'PATCH',
+                headers: {
+                    'accept': 'application/json',
+                    'content-type': 'application/json'
+                },
+                url: 'http://localhost:3300/customers/' + obj.id,
+                data: JSON.stringify(obj)
+            })
+        }
+
+
+    </script>
+    <script src="./assets/js/delete.js"></script>
+    <script src="./assets/js/deposit.js"></script>
+    <script src="./assets/js/withdraw.js"></script>
+    <script src="./assets/js/transfer.js"></script>
+    <script src="./assets/js/history.js"></script>
+    <script src="./assets/js/create.js"></script>
+</body>
+
+</html>

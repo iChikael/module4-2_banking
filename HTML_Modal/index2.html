@@ -15,7 +15,6 @@
         <header>
 
         </header>
-
         <div class="content">
             <form method="post">
                 <div class="row mb-3">
@@ -56,7 +55,7 @@
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Balance</th>
-                        <th colspan="3">Action</th>
+                        <th colspan="5">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,11 +106,145 @@
         </div>
     </div>
 
+    <!-- Modal Withdraw -->
+    <div class="modal fade" id="mdWithdraw" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal deposit</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameDep">Full Name</label>
+                                <input type="text" id="fullNameWd" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailDep">Email</label>
+                                <input type="email" id="emailWd" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="balanceDep">Current balance</label>
+                                <input type="tel" id="balanceWd" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="transactionAmounWd">Transaction Amount</label>
+                                <input type="text" id="transactionAmounWd" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnWithdraw" class="btn btn-outline-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Deposit -->
+    <div class="modal fade" id="mdDeposit" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal deposit</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameDep">Full Name</label>
+                                <input type="text" id="fullNameDep" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailDep">Email</label>
+                                <input type="email" id="emailDep" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="balanceDep">Current balance</label>
+                                <input type="tel" id="balanceDep" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="transactionAmountDep">Transaction Amount</label>
+                                <input type="text" id="transactionAmountDep" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnDeposit" class="btn btn-outline-success">Deposit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal transfer -->
+    <div class="modal fade" id="mdTransfer" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal transfer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-lg-4">
+                                <label for="fullNameSent">Full Name</label>
+                                <input type="text" id="fullNameSent" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="recipientSelect">Recipient</label>
+                                <select class="form-select" name="recipient.id" id="recipientSelect">
+                                    <option value="" selected disabled>Select recipient</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="balanceSent">Current balance</label>
+                                <input type="tel" id="balanceSent" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-lg-4">
+                                <label for="transactionAmountSent">Transaction Amount</label>
+                                <input type="text" id="transactionAmountSent" class="form-control">
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="transactionAmountFee">Transaction Fee (10%)</label>
+                                <input type="text" id="transactionAmountFee" class="form-control" readonly>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="transactionAmountTotal">Transaction Total</label>
+                                <input type="text" id="transactionAmountTotal" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnTransfer" class="btn btn-outline-success">Transfer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="/assets/jquery/jquery-3.6.4.min.js"></script>
     <script src="/assets/bootstrap/v5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/sweetalert2/sweetalert2.all.min.js"></script>
-
     <script src="/assets/js/appBase.js"></script>
 
     <script>
@@ -138,6 +271,21 @@
                         </button>
                     </td>
                     <td>
+                        <button class='btn btn-outline-secondary deposit' data-id='${obj.id}'>
+                            Deposit
+                        </button>
+                    </td> 
+                    <td>
+                        <button class='btn btn-outline-secondary withdraw' data-id='${obj.id}'>
+                            Withdraw
+                        </button>
+                    </td> 
+                    <td>
+                        <button class='btn btn-outline-secondary transfer' data-id='${obj.id}'>
+                            Transfer
+                        </button>
+                    </td> 
+                    <td>
                         <button class='btn btn-outline-danger delete' data-id='${obj.id}'>
                             Delete
                         </button>
@@ -154,7 +302,10 @@
             });
 
             addEventEdit();
+            addEventDeposit();
+            addEventWithdraw();
             addEventDelete();
+            addEventTransfer();
         }
 
         getAllCustomers();
@@ -172,11 +323,191 @@
                     $('#fullNameUp').val(customer.fullName);
                     $('#emailUp').val(customer.email);
                     $('#phoneUp').val(customer.phone);
-                    $('#addressUp').val(customer.address);
+                    $('#transactionAmountDep').val(0);
                     $('#mdUpdate').modal('show');
                 }
             });
         }
+
+        function addEventDeposit() {
+            $('.deposit').on('click', function () {
+                let customerId = $(this).data('id');
+                let customer = getCustomerById(customerId);
+                if (customer) {
+                    $('#fullNameDep').val(customer.fullName);
+                    $('#emailDep').val(customer.email);
+                    $('#balanceDep').val(customer.balance);
+                    $('#mdDeposit').modal('show');
+                }
+            });
+        }
+
+        function addEventWithdraw() {
+            $('.withdraw').on('click', function () {
+                let customerId = $(this).data('id');
+                let customer = getCustomerById(customerId);
+                if (customer) {
+                    $('#fullNameWd').val(customer.fullName);
+                    $('#emailWd').val(customer.email);
+                    $('#balanceWd').val(customer.balance);
+                    $('#mdWithdraw').modal('show');
+                }
+            });
+        }
+
+
+        function getCustomerById(id) {
+            for (let i = 0; i < customers.length; i++) {
+                if (customers[i].id === id) {
+                    return customers[i];
+                }
+            }
+            return null;
+        }
+
+        function addEventTransfer() {
+            $('.transfer').on('click', function () {
+                let senderId = $(this).data('id');
+                let sender = getCustomerById(senderId);
+                if (sender) {
+                    $('#fullNameSent').val(sender.fullName);
+                    $('#balanceSent').val(sender.balance);
+                    $('#transactionAmountSent').val('');
+                    $('#transactionAmountTotal').val('');
+                    $('#transactionAmountFee').val('');
+                    $('#mdTransfer').modal('show');
+                }
+
+                var recipientSelect = $('#recipientSelect');
+                recipientSelect.empty();
+                recipientSelect.append($('<option>').val('').text('Select recipient'));
+
+                $.each(customers, function (index, customer) {
+                    if (customer.id !== senderId && customer.deleted === false) {
+                        recipientSelect.append($('<option>').val(customer.id).text(customer.id + '-' + customer.fullName));
+                    }
+                });
+            });
+        }
+
+
+        function handleTransferCustomer(senderId, recipientId, amount) {
+            let sender = getCustomerById(senderId);
+            let recipient = getCustomerById(recipientId);
+
+            if (sender && recipient && amount > 0 && sender.balance >= amount) {
+                sender.balance -= amount;
+                recipient.balance += amount;
+                console.log('Transfer successful!');
+                console.log('Sender:', sender.fullName, 'Balance:', sender.balance);
+                console.log('Recipient:', recipient.fullName, 'Balance:', recipient.balance);
+            } else {
+                console.log('Transfer failed!');
+            }
+        }
+
+
+
+        $(document).ready(function () {
+            var transactionAmountSent = $('#transactionAmountSent');
+            var transactionAmountTotal = $('#transactionAmountTotal');
+            var transactionAmountFee = $('#transactionAmountFee');
+
+            transactionAmountSent.on('input', function () {
+                var amountSent = parseFloat(transactionAmountSent.val());
+                var fee = amountSent * 0.1;
+                var total = amountSent + fee;
+
+                transactionAmountFee.val(fee);
+                transactionAmountTotal.val(total);
+            });
+        });
+
+
+
+        
+
+
+
+        $('#btnDeposit').on('click', () => {
+            let customerId = $('.deposit').data('id');
+            let currentBalance = +$('#balanceDep').val();
+            let transactionAmount = +$('#transactionAmountDep').val();
+            let newBalance = currentBalance + transactionAmount;
+            console.log(newBalance)
+            let balance = newBalance;
+
+
+            let customer = {
+                id: customerId,
+                balance: balance
+            };
+            handleDepositCustomer(customer)
+                .then((data) => {
+                    let str = renderCustomer(data);
+                    $('#tr_' + customerId).replaceWith(str);
+
+                    addEventEdit();
+                    addEventDeposit();
+                    addEventWithdraw();
+                    addEventTransfer();
+                    addEventDelete();
+
+                    $('#mdDeposit').modal('hide');
+                    Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Deposit has been success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        });
+
+
+        $('#btnWithdraw').on('click', () => {
+            let customerId = $('.withdraw').data('id');
+            let currentBalance = +$('#balanceWd').val();
+            console.log(currentBalance)
+            let transactionAmount = +$('#transactionAmounWd').val();
+            console.log(transactionAmount)
+            let newBalance = currentBalance - transactionAmount;
+
+            let balance = newBalance;
+
+
+            let customer = {
+                id: customerId,
+                balance: balance
+            };
+            handleWithdrawCustomer(customer)
+                .then((data) => {
+                    let str = renderCustomer(data);
+                    $('#tr_' + customerId).replaceWith(str);
+
+                    addEventEdit();
+                    addEventDeposit();
+                    addEventWithdraw();
+                    addEventTransfer();
+                    addEventDelete();
+
+                    $('#mdWithdraw').modal('hide');
+                    Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Withdraw has been success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        });
+
 
         function addEventDelete() {
             $('.delete').on('click', function () {
@@ -211,6 +542,7 @@
             })
         }
 
+
         $('#btnCreate').on('click', () => {
             let fullName = $('#fullNameCre').val();
             let email = $('#emailCre').val();
@@ -235,7 +567,16 @@
             $('#tbCustomer tbody').prepend(str);
 
             addEventEdit();
+            addEventDeposit();
             addEventDelete();
+
+            Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
 
         })
 
@@ -263,9 +604,20 @@
                 $('#tr_' + customerId).replaceWith(str);
 
                 addEventEdit();
+                addEventDeposit();
+                addEventWithdraw();
+                addEventTransfer();
                 addEventDelete();
 
                 $('#mdUpdate').modal('hide');
+
+                Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Customer has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
             })
                 .catch((error) => {
                     console.log(error);
@@ -289,6 +641,33 @@
             });
         }
 
+        function handleDepositCustomer(obj) {
+            return new Promise((resolve, reject) => {
+                const index = customers.findIndex(item => item.id === obj.id);
+                if (index === -1) {
+                    reject(new Error('Customer not found'));
+                    return;
+                }
+                customers[index].balance = obj.balance;
+
+
+                resolve(customers[index]);
+            });
+        }
+
+        function handleWithdrawCustomer(obj) {
+            return new Promise((resolve, reject) => {
+                const index = customers.findIndex(item => item.id === obj.id);
+                if (index === -1) {
+                    reject(new Error('Customer not found'));
+                    return;
+                }
+                customers[index].balance = obj.balance;
+
+
+                resolve(customers[index]);
+            });
+        }
 
 
     </script>

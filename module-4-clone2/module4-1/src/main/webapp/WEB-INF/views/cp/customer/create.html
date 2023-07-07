@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Create customer</title>
+    <th:block th:replace="/cp/layout/head :: head"/>
+</head>
+
+<body>
+<div class="container-scroller">
+    <th:block th:replace="/cp/layout/navbar :: navbar"/>
+
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+
+            <th:block th:replace="/cp/layout/theme-setting-wrapper :: theme-setting-wrapper"/>
+
+            <th:block th:replace="/cp/layout/right-sidebar :: right-sidebar"/>
+
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <th:block th:replace="/cp/layout/sidebar :: sidebar"/>
+            </nav>
+
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12 d-flex align-items-stretch grid-margin">
+                        <div class="row flex-grow">
+                            <div class="col-12 grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Default form</h4>
+                                        <p class="card-description">
+                                            Basic form layout
+                                        </p>
+                                        <form class="forms-sample">
+                                            <div class="form-group">
+                                                <label for="fullName">Full name</label>
+                                                <input type="email" class="form-control" id="fullName" placeholder="Enter full name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone">Phone</label>
+                                                <input type="password" class="form-control" id="phone" placeholder="Phone">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="address">Address</label>
+                                                <input type="password" class="form-control" id="address" placeholder="Address">
+                                            </div>
+                                            <button type="submit" class="btn btn-success mr-2">Submit</button>
+                                            <button class="btn btn-light">Cancel</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <th:block th:replace="/cp/layout/footer :: footer"/>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<th:block th:replace="/cp/layout/script :: script"/>
+
+</body>
+
+</html>
